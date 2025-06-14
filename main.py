@@ -22,7 +22,7 @@ meses = ["Enero 2024", "Febrero 2024", "Marzo 2024", "Abril 2024", "Mayo 2024",
 
 while opcion != 4:
     try:
-        opcion = int(input("Seleccione una opcion \n1.-Grabar. \n2.-Buscar. \n3.-Imprimir Certificados \n4.-Salir \nSeleccion: "))
+        opcion = int(input("Seleccione una opcion \n1.-GRABAR \n2.-BUSCAR \n3.-IMPRIMIR CERTIFICADOS \n4.-SALIR \nSELECCION: "))
     except Exception:
         print("ingreso invalido")
         continue
@@ -96,7 +96,7 @@ while opcion != 4:
                 break
 
         while True:
-            genero = input("Ingrese su genero:")
+            genero = input("Ingrese su genero (M: Masculino o F: Femenino):")
             if genero == "":
                 continue
             if genero not in generos:
@@ -123,7 +123,7 @@ while opcion != 4:
         dicc["Estado Civil"].append(est_civil[estado])
         dicc["Genero"].append(generos[genero])
         dicc["fecha"].append(fecha)
-        print("Afiliado Agregado correctamente")
+        print("\nAfiliado Agregado correctamente \n")
 
     if opcion == 2:
         while True :
@@ -136,10 +136,16 @@ while opcion != 4:
                 print("\n RUT no encontrado.")
             try:    
                 Respuesta = str(input("\nDesea realizar otra busqueda (SI/NO): \n")).upper()
+                if Respuesta == "SI":
+                    continue
+                elif Respuesta == "NO":
+                    break
+                else:
+                    print("Respuesta no valida")
+
             except ValueError:
                 print("debe ingresar solo caracteres")
-            if Respuesta == "NO":
-                break
+
 
     if opcion == 3:
         busqueda = input("Ingrese el rut del afiliado: ")
