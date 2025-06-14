@@ -3,7 +3,6 @@ from random import randint
 opcion = 0
 flag = True
 
-
 est_civil = {"C":"Casado",
              "S":"Soltero",
              "V":"Viudo"}
@@ -124,6 +123,7 @@ while opcion != 4:
         dicc["Genero"].append(generos[genero])
         dicc["fecha"].append(fecha)
         print("Afiliado Agregado correctamente")
+    if opcion == 2:
 
     if opcion == 3:
         
