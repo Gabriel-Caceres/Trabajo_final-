@@ -123,8 +123,3 @@ while opcion != 4:
         dicc["Genero"].append(generos[genero])
         dicc["fecha"].append(fecha)
         print("Afiliado Agregado correctamente")
-    if opcion == 2:
-
-    if opcion == 3:
-        
-    if opcion == 4:
