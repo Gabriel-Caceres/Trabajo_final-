@@ -20,6 +20,7 @@ dicc = {"Rut": [],
 meses = ["Enero 2024", "Febrero 2024", "Marzo 2024", "Abril 2024", "Mayo 2024",
          "Junio 2024", "Julio 2024", "Agosto 2024", "Septiembre 2024", "Octubre 2024", "Noviembre 2024", "Diciembre 2024"]
 
+
 while opcion != 4:
     try:
         opcion = int(input("Seleccione una opcion \n1.-GRABAR \n2.-BUSCAR \n3.-IMPRIMIR CERTIFICADOS \n4.-SALIR \nSELECCION: "))
@@ -33,22 +34,42 @@ while opcion != 4:
             rut = str(input("Ingrese Rut (con puntos y guion):"))
             if rut == "":
                 continue
-            punto = rut.find(".")
-            guion = rut.find("-")
-            largo = len(rut)
+            validador_rut = list(rut)
 
-            if largo == 12 and punto == 2 and guion == 10:
-                break
-            elif largo == 11 and punto == 1 and guion == 9:
-                break
+            if len(validador_rut) == 12:
+                if validador_rut[2] == validador_rut[6] == ".":
+                    if validador_rut[10] == "-":
+                        break
+                    else:
+                        print("Formato de Rut incorrecto")
+                        print("\tEl formato es ##.###.###-#")
+                        continue
+                else:
+                    print("Formato de Rut incorrecto")
+                    print("\tEl formato es ##.###.###-#")
+                    continue
+            elif len(validador_rut) == 11:
+                if validador_rut[1] == validador_rut[5] == ".":
+                    if validador_rut[9] == "-":
+                        break
+                    else:
+                        print("Formato de Rut incorrecto")
+                        print("\tEl formato es ##.###.###-#")
+                        continue
+                else:
+                    print("Formato de Rut incorrecto")
+                    print("\tEl formato es ##.###.###-#")
+                    continue
             else:
-                print("el rut ingresado no es valido ")
+                print("Formato de Rut incorrecto")
+                print("\tEl formato es ##.###.###-#")
                 continue
+
 
         flag = True
 
         while flag:
-            nombre = input("Ingrese Nombre:")
+            nombre = input("Ingrese Nombre:").title()
 
             if nombre == "":
                 continue
@@ -62,7 +83,7 @@ while opcion != 4:
                 
         flag = True
         while flag:
-            apellido = input("Ingrese apellido paterno:")
+            apellido = input("Ingrese apellido paterno:").title()
             if apellido == "":
                 continue
             if any(caracter.isdigit() for caracter in apellido):
@@ -116,7 +137,7 @@ while opcion != 4:
                 print("recuerda ingresar la fecha en formato DD-MM-YYYY")
                 continue  
 
-        nombre_completo = nombre + "" + apellido
+        nombre_completo = nombre + " " + apellido
         dicc["Rut"].append(rut)
         dicc["Nombre"].append(nombre_completo)
         dicc["Edad"].append(edad)
@@ -159,7 +180,7 @@ while opcion != 4:
                 print(f"{clave.ljust(20)}: {valores[indice]}")
             print("-"*50)
             for mes in meses:
-                print(f"{mes.ljust(20)}: $ {randint(1000,1500)}")
+                print(f"{mes.ljust(20)}: $ {randint(1000,1500):,}")
             print("-"*50, "\n")
 
         except ValueError:
